@@ -1,0 +1,27 @@
+services:
+
+  s0:
+    build: ./app
+    environment:
+      - PORT=80
+      - SERVER_NAME=s0
+
+  s1:
+    build: ./app
+    environment:
+      - PORT=80
+      - SERVER_NAME=s1
+  
+  s2:
+    build: ./app
+    environment:
+      - PORT=80
+      - SERVER_NAME=s2
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - s0
+      - s1
